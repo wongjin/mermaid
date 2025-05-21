@@ -1,0 +1,390 @@
+/* --- style.css (Updated with new aesthetic for Original HTML & Consistent Export Buttons - Option 2) --- */
+:root {
+  /* Variables from your example CSS */
+  --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  --secondary-gradient: linear-gradient(135deg, #3b82f6 0%, #2dd4bf 100%); /* Kept for potential future use */
+  --background-color: #ffffff; /* Page background */
+  --surface-color: #f9fafb;    /* Panel/Card background */
+  --border-color: #e5e7eb;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-tertiary: #9ca3af; /* For placeholders or less important text */
+  --accent-color: #6366f1; /* Solid accent for focus states etc. */
+  --error-color: #ef4444;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  
+  --radius-sm: 0.375rem; /* 6px */
+  --radius-md: 0.5rem;   /* 8px */
+  --radius-lg: 0.75rem;  /* 12px */
+  
+  --transition: all 0.2s ease-in-out;
+  
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'SF Mono', SFMono-Regular, ui-monospace, Monaco, 'Cascadia Mono', 'Segoe UI Mono', Menlo, Consolas, monospace;
+
+  /* Spacing units for consistency */
+  --space-xs: 0.5rem;  /* 8px */
+  --space-sm: 1rem;    /* 16px */
+  --space-md: 1.5rem;  /* 24px */
+  --space-lg: 2rem;    /* 32px */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  background-color: var(--background-color); /* Page background from new palette */
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-size: 16px; /* Base font size from new CSS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+header {
+  padding: var(--space-md) 0; /* Use spacing var */
+  text-align: center;
+  width: 100%;
+  position: relative; 
+  z-index: 10;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem; 
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  background: var(--primary-gradient); 
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.main-container {
+  display: flex;
+  flex: 1;
+  padding: var(--space-lg); 
+  gap: var(--space-lg);    
+  width: 100%;
+  max-width: 1440px; 
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.left-pane, .right-pane {
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-color); 
+  box-shadow: var(--shadow-md);
+  padding: var(--space-md); 
+  display: flex;
+  flex-direction: column;
+}
+
+.left-pane {
+  flex: 1;
+  min-width: 300px;
+}
+
+.right-pane {
+  flex: 2; 
+  min-width: 400px;
+}
+
+.left-pane h2, .right-pane h2 {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: var(--space-md); 
+  letter-spacing: -0.025em;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs); 
+  padding-bottom: 0; 
+  border-bottom: none; 
+}
+
+.left-pane h2::before, .right-pane h2::before { 
+  content: "";
+  display: inline-block;
+  width: 0.25rem;
+  height: 1.25rem; 
+  background: var(--primary-gradient);
+  border-radius: 1rem; 
+}
+
+#mermaid-code {
+  width: 100%;
+  box-sizing: border-box;
+  padding: var(--space-sm); 
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  flex-grow: 1;
+  margin-bottom: var(--space-sm); 
+  background-color: #ffffff; 
+  color: var(--text-primary);
+  resize: none; 
+  line-height: 1.5; 
+  transition: var(--transition);
+}
+
+#mermaid-code:focus { 
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1); 
+}
+
+#mermaid-code::placeholder {
+  color: var(--text-tertiary); 
+  opacity: 1;
+}
+
+
+#render-button { 
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--primary-gradient);
+  color: white;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; 
+  align-self: flex-start; 
+}
+
+#render-button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+#render-button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm); 
+}
+
+#render-button::before { 
+  content: "⚡";
+  font-size: 1.125rem;
+}
+
+#mermaid-preview { 
+  width: 100%;
+  height: auto; 
+  min-height: 300px;
+  border: 1px solid var(--border-color);
+  background-color: #ffffff; 
+  border-radius: var(--radius-md);
+  padding: var(--space-md); 
+  box-sizing: border-box;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  transition: var(--transition);
+}
+#mermaid-preview:not(:has(svg)) { 
+    background-color: var(--surface-color); 
+}
+
+#mermaid-preview svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+#mermaid-preview p { 
+    color: var(--text-tertiary);
+    font-size: 0.95rem;
+    text-align: center;
+}
+
+.controls-export-area {
+  background-color: var(--surface-color); 
+  padding: var(--space-md) var(--space-lg); 
+  border-top: 1px solid var(--border-color);
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md); 
+  align-items: center;
+}
+
+.control-group { 
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; 
+}
+
+.control-group label { 
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
+
+.control-group select { 
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: #ffffff;
+  color: var(--text-primary);
+  min-width: 180px;
+  transition: var(--transition);
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%234B5563%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 0.75rem;
+  padding-right: 2.5rem; 
+}
+
+.control-group select:focus { 
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* --- Export Button Styling - Option 2 (Both White with Border) --- */
+#export-png-button,
+#export-svg-button {
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: white;            /* COMMON STYLE */
+  color: var(--text-primary);         /* COMMON STYLE */
+  border: 1px solid var(--border-color); /* COMMON STYLE */
+}
+
+#export-png-button:hover,
+#export-svg-button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+  background-color: var(--surface-color); /* Slight hover background change */
+  border-color: #ced4da; /* Slightly darker border on hover */
+}
+/* --- End of Export Button Styling --- */
+
+
+#error-message-area { 
+  margin-top: var(--space-sm); 
+  padding: var(--space-sm);
+  background-color: rgba(239, 68, 68, 0.05); 
+  color: var(--error-color);
+  border: 1px solid rgba(239, 68, 68, 0.2); 
+  border-radius: var(--radius-md);
+  white-space: pre-wrap;
+  display: none;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 0.9rem;
+  order: 99; 
+}
+
+#error-message-area.visible { 
+  display: block;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn { 
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1200px) {
+  .main-container {
+    padding: var(--space-md); 
+    gap: var(--space-md);     
+  }
+}
+
+@media (max-width: 900px) {
+  .controls-export-area {
+    gap: var(--space-sm); 
+    padding: var(--space-md); 
+  }
+  
+  .control-group {
+    flex-basis: calc(50% - (var(--space-sm) / 2)); 
+    min-width: 280px; 
+  }
+  
+  #error-message-area { 
+     flex-basis: 100%; /* Ensure error message takes full width if it wraps */
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 15px; 
+  }
+  .main-container {
+    flex-direction: column;
+    padding: var(--space-sm); 
+    gap: var(--space-sm);     
+  }
+  
+  .left-pane, .right-pane {
+    width: 100%;
+    min-width: auto; 
+    padding: var(--space-sm); 
+  }
+  
+  header h1 {
+    font-size: 1.75rem; 
+  }
+  
+  .controls-export-area {
+    flex-direction: column; 
+    align-items: stretch; 
+    padding: var(--space-sm);
+  }
+
+  .control-group {
+    flex-basis: auto; 
+    width: 100%; 
+    min-width: auto;
+  }
+  
+  .control-group select {
+    width: 100%; 
+  }
+
+  /* Group containing export buttons */
+  .control-group:has(#export-png-button) { 
+    flex-direction: column; 
+    gap: var(--space-xs);
+  }
+  #export-png-button,
+  #export-svg-button {
+    width: 100%; 
+  }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mermaid</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Mermaid</h1>
+    </header>
+
+    <main class="main-container">
+        <section class="left-pane">
+            <h2>Mermaid 输入</h2>
+            <textarea id="mermaid-code" rows="20" placeholder="在此处粘贴您的 Mermaid ...例如：
+graph TD;
+    A[圣诞节] -->|得到| B(帅哥);
+    B --> C{思考人生};
+    C -->|选项1| D[开启奇幻之旅];
+    C -->|选项2| E[平淡生活];"></textarea>
+            <button id="render-button">生成预览</button>
+        </section>
+
+        <section class="right-pane">
+            <h2>图形预览</h2>
+            <div id="mermaid-preview">
+                </div>
+        </section>
+    </main>
+
+    <footer class="controls-export-area">
+        <div class="control-group">
+            <label for="theme-selector">图表样式：</label>
+            <select id="theme-selector">
+                </select>
+        </div>
+        <div class="control-group">
+            <label for="font-selector">字体选择：</label>
+            <select id="font-selector">
+                </select>
+        </div>
+        <div class="control-group">
+            <label for="png-size-selector">导出尺寸 (基于1080p高度)：</label>
+            <select id="png-size-selector">
+                <option value="1">1080p 高度 (默认)</option>
+                <option value="2">2x (两倍1080p高度)</option>
+                <option value="3">3x (三倍1080p高度)</option>
+                <option value="4">4x (四倍1080p高度)</option>
+            </select>
+            <button id="export-png-button">导出为 PNG</button>
+            <button id="export-svg-button">导出为 SVG</button>
+        </div>
+        <div id="error-message-area">
+            </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script> <script src="script.js"></script>
+</body>
+</html>
